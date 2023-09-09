@@ -14,6 +14,7 @@ public:
 	void FillMatrix();
 	void PrintMatrix();
 	void PrintDet();
+	void Transposition();
 
 
 	//friend ostream& operator<<(ostream&, Tmatrix&);
