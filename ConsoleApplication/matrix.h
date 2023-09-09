@@ -1,8 +1,10 @@
 #pragma once
-#ifndef MATRIX_H
+
 #define MATRIX_H
 #include "number.h"
+#include <iomanip>
 #include <ostream>
+
 using namespace std;
 
 
@@ -11,18 +13,16 @@ class Tmatrix
 	//number capacity, coloumns_f;
 public:
 	Tmatrix();
-	void FillMatrix();
+	void FillMatrix(int cap, number** matrix);
 	void PrintMatrix();
-	void PrintDet();
+	number PrintDet();
 	void Transposition();
-
+	int rank();
 
 	//friend ostream& operator<<(ostream&, Tmatrix&);
 private:
 	number** arr;
-	void fillWithZeros(number massiv[10][10]);
-	int capacity = 2;
-	number determinant(number submatrix[10][10], int capacity);
+	int capacity = 3;
+	void fillWithZeros(number matrix[10][10]);
+	number determinant(number matrix[10][10], int capacity);
 };
-
-#endif // !MATRIX_H
