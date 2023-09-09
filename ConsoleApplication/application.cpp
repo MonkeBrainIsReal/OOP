@@ -47,7 +47,7 @@ int Tapplication::exec()
 			matrix.PrintMatrix();
 		}
 		break;
-		case 48://done
+		case 27://done
 			system("cls");
 			cout << "Good bye\n";
 			return 0;
@@ -65,7 +65,7 @@ int Tapplication::menu()
 	printf("3 - transpositioning\n");
 	printf("4 - rang\n");
 	printf("5 - print current matrix\n");
-	printf("0 - exit\n");
+	printf("esc - exit\n");
 	int select = _getch();
 	return select;
 

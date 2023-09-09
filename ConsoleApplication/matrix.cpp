@@ -19,8 +19,9 @@ Tmatrix::Tmatrix() {
 }
 void Tmatrix::FillMatrix()
 {
-	printf("fill in the capacity = ");
+	
 	system("cls");
+	printf("fill in the capacity = ");
 	cin >> capacity;
 	arr = new number * [capacity];
 	for (int i = 0; i < capacity; i++) {
