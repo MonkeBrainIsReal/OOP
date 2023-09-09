@@ -5,72 +5,68 @@
 #include <conio.h>
 using namespace std;
 
-Tapplication::Tapplication() 
+Tapplication::Tapplication()
 {
 
 
 }
-int Tapplication::exec() 
+int Tapplication::exec()
 {
 	int select;
-	number a[3][3] = 
-	{
-		{1,1,1},
-		{1,1,1},
-		{1,1,1}
-
-	};//матрица по умолчанию
-	while (true) 
+	number capacity = 3, coloumns_f = 3;
+	Tmatrix matrix;
+	while (true)
 	{
 		select = menu();
-		switch (select) 
+		switch (select)
 		{
-		case 49:
-			system("cls");
-			cout << "1\n";
+		case 49://done
+
+			matrix.FillMatrix();
 			break;
 		case 50:
 			system("cls");
-			cout << "2\n";
+			matrix.PrintDet();
 			break;
+
+
 		case 51:
 			system("cls");
 			cout << "3\n";
 			break;
-		case 52: 
+		case 52:
 		{
 			system("cls");
 			cout << "4\n";
-			Tmatrix a();
-			
 		}
-			
-			break;
-		case 53:
+		break;
+		case 53://done
+		{
 			system("cls");
-			cout << "5\n";
-			break;
-		case 48:
+			cout << "Here is your matrix:" << endl;
+			matrix.PrintMatrix();
+		}
+		break;
+		case 48://done
 			system("cls");
-			cout << "0\n";
-				return 0;
+			cout << "Good bye\n";
+			return 0;
+			break;
 		default:
 			break;
-
 		}
 	}
 }
 
-int Tapplication::menu() 
+int Tapplication::menu()
 {
-
-	int select = _getch();
-	printf("1 - fill in the matrix\n");
+	printf("1 - fill in matrix\n");
 	printf("2 - determinant\n");
 	printf("3 - transpositioning\n");
 	printf("4 - rang\n");
 	printf("5 - print current matrix\n");
 	printf("0 - exit\n");
+	int select = _getch();
 	return select;
 
 }

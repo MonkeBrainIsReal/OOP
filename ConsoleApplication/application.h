@@ -1,9 +1,6 @@
 #pragma once
 #ifndef APPLICATION_H
 #define APPLICATIOIN_H
-
-
-
 class Tapplication
 {
 public:
