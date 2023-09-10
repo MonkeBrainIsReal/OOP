@@ -3,6 +3,7 @@
 #include "matrix.h"
 
 using namespace std;
+HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
 
 Tapplication::Tapplication()
 {
@@ -15,7 +16,7 @@ int Tapplication::exec()
 	Tmatrix matrix;
 	int capacity;
 	COORD cord{ 0,2 };
-	HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
+	
 	while (true)
 	{
 		select = menu();
@@ -115,12 +116,15 @@ int Tapplication::exec()
 
 int Tapplication::menu()
 {
+	SetConsoleTextAttribute(Output, 14);
 	printf("1 - fill in matrix\n");
 	printf("2 - find determinant\n");
 	printf("3 - transpositioning\n");
-	printf("4 - rang\n");
+	printf("4 - rank\n");
 	printf("5 - print current matrix\n");
+	SetConsoleTextAttribute(Output, 12);
 	printf("esc - exit\n");
+	SetConsoleTextAttribute(Output, 14);
 	printf("_________________________________________________________________________________________________________________________________\n");
 	int select = _getch();
 	return select;
