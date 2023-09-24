@@ -19,12 +19,12 @@ public:
 	complex operator- (complex);
 	bool operator== (complex);
 
-	complex& operator-=(const complex& other) {
+	complex operator-=(const complex& other) {
 		re -= other.re;
 		im -= other.im;
 		return *this;
 	}
-	complex& operator/=(const complex& other) {
+	complex operator/=(const complex& other) {
 		double denominator = other.re * other.re + other.im * other.im;
 		double newRe = (re * other.re + im * other.im) / denominator;
 		double newIm = (im * other.re - re * other.im) / denominator;
