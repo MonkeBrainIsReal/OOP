@@ -16,19 +16,13 @@ public:
 	complex operator* (complex);
 	complex operator+ (complex);
 	complex operator- (complex);
-	bool operator== (complex);
 	complex operator-=(const complex& other);
 	complex operator/=(const complex& other);
-		
-	
-
+	bool operator== (complex);
 	bool operator!=(double other) const;
-	
-
 	double toDouble() const {
 		return re; // ¬озвращает действительную часть как double
 	}
-	
 	friend ostream& operator <<(ostream&, complex);
 	friend istream& operator >>(istream&, complex&);
 };
