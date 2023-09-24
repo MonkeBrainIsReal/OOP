@@ -1,8 +1,8 @@
 
+
 #include <iostream>
 #include <conio.h>
 #include <Windows.h>
-
 #pragma once
 #ifndef APPLICATION_H
 #define APPLICATIOIN_H
@@ -14,7 +14,6 @@ public:
 	int exec();
 private:
 	int menu();
-	COORD cord{ 0,0 };
 };
 
 #endif // !APPLICATION_H

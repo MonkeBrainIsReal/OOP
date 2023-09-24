@@ -3,7 +3,6 @@
 #include "matrix.h"
 
 using namespace std;
-HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
 
 Tapplication::Tapplication()
 {
@@ -16,7 +15,7 @@ int Tapplication::exec()
 	Tmatrix matrix;
 	int capacity;
 	COORD cord{ 0,2 };
-	
+	HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
 	while (true)
 	{
 		select = menu();
@@ -24,25 +23,7 @@ int Tapplication::exec()
 		{
 		case 49:
 			system("cls");
-			printf("fill in the capacity = ");
-			cin >> capacity;
-			number** arr;
-			arr = new number * [capacity];
-			for (int i = 0; i < capacity; i++) {
-				arr[i] = new number[capacity];
-			}
-			cord.Y = 2;
-			printf("fill in the matrix \n");
-			for (int i = 0; i < capacity; i++) {
-				for (int j = 0; j < capacity; j++) {
-					SetConsoleCursorPosition(Output, cord);
-					cin >> arr[i][j];
-					cord.X += 5;
-				}
-				cord.Y += 1; cord.X = 0;
-			}
-			matrix.FillMatrix(capacity, arr);
-			system("cls");
+			matrix.FillMatrix();
 			break;
 		case 50:
 			system("cls");
@@ -108,6 +89,7 @@ int Tapplication::exec()
 			return 0;
 			break;
 		default:
+			system("cls");
 			break;
 
 		}
@@ -116,15 +98,12 @@ int Tapplication::exec()
 
 int Tapplication::menu()
 {
-	SetConsoleTextAttribute(Output, 14);
 	printf("1 - fill in matrix\n");
 	printf("2 - find determinant\n");
 	printf("3 - transpositioning\n");
-	printf("4 - rank\n");
+	printf("4 - rang\n");
 	printf("5 - print current matrix\n");
-	SetConsoleTextAttribute(Output, 12);
 	printf("esc - exit\n");
-	SetConsoleTextAttribute(Output, 14);
 	printf("_________________________________________________________________________________________________________________________________\n");
 	int select = _getch();
 	return select;

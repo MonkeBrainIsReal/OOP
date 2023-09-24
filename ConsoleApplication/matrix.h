@@ -1,5 +1,5 @@
 #pragma once
-
+#ifndef MATRIX_H
 #define MATRIX_H
 #include "number.h"
 #include <iomanip>
@@ -13,7 +13,7 @@ class Tmatrix
 	//number capacity, coloumns_f;
 public:
 	Tmatrix();
-	void FillMatrix(int cap, number** matrix);
+	void FillMatrix();
 	void PrintMatrix();
 	number PrintDet();
 	void Transposition();
@@ -26,3 +26,5 @@ private:
 	void fillWithZeros(number matrix[10][10]);
 	number determinant(number matrix[10][10], int capacity);
 };
+
+#endif // !MATRIX_H
