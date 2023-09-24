@@ -10,7 +10,6 @@ using namespace std;
 
 class Tmatrix
 {
-	//number capacity, coloumns_f;
 public:
 	Tmatrix();
 	void FillMatrix();
@@ -18,8 +17,6 @@ public:
 	number PrintDet();
 	void Transposition();
 	int rank();
-
-	//friend ostream& operator<<(ostream&, Tmatrix&);
 private:
 	number** arr;
 	int capacity = 3;

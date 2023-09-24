@@ -77,7 +77,7 @@ number Tmatrix::determinant(number matrix[10][10], int n) {
 				}
 				subi++;
 			}
-			det = det + (pow(-1, x) * matrix[0][x] * determinant(submatrix, n - 1));
+			det = det + (number(pow(-1, x)) * matrix[0][x] * determinant(submatrix, n - 1));
 		}
 	}
 	return det;
@@ -126,13 +126,13 @@ int Tmatrix::rank() {
 			if (nonzeroRow != rank) {
 				std::swap(matrix[nonzeroRow], matrix[rank]);
 			}
-			double pivot = matrix[rank][col];
+			number pivot = matrix[rank][col];
 			for (int i = 0; i < capacity; i++) {
 				matrix[rank][i] /= pivot;
 			}
 			for (int row = 0; row < capacity; row++) {
 				if (row != rank) {
-					double factor = matrix[row][col];
+					number factor = matrix[row][col];
 					for (int i = 0; i < capacity; i++) {
 						matrix[row][i] -= factor * matrix[rank][i];
 					}

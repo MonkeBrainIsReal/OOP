@@ -1,7 +1,9 @@
 #pragma once
+#include"complex.h"
 #ifndef NUMBER_H
 #define NUMBER_H
 
-typedef double number;
+
+typedef complex number;
 
 #endif // !NUMBER_H

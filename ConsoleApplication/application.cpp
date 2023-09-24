@@ -101,7 +101,7 @@ int Tapplication::menu()
 	printf("1 - fill in matrix\n");
 	printf("2 - find determinant\n");
 	printf("3 - transpositioning\n");
-	printf("4 - rang\n");
+	printf("4 - rank\n");
 	printf("5 - print current matrix\n");
 	printf("esc - exit\n");
 	printf("_________________________________________________________________________________________________________________________________\n");

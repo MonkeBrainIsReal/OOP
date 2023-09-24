@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="application.cpp" />
+    <ClCompile Include="complex.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="matrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application.h" />
+    <ClInclude Include="complex.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="number.h" />
   </ItemGroup>
