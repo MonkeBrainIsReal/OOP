@@ -1,6 +1,6 @@
 #include "complex.h"
 complex::complex() {
-	
+
 }
 
 complex::complex(const int value) : re(static_cast<double>(value)), im(0.0)
@@ -8,7 +8,7 @@ complex::complex(const int value) : re(static_cast<double>(value)), im(0.0)
 
 }
 
-complex complex::operator* (complex c) 
+complex complex::operator* (complex c)
 {
 	complex t;
 	t.re = re * c.re - im * c.im;
@@ -19,7 +19,7 @@ complex complex::operator* (complex c)
 complex complex::operator+ (complex c)
 {
 	complex t;
-	t.re = re+ c.re;
+	t.re = re + c.re;
 	t.im = c.im + im;
 	return t;
 }
@@ -32,7 +32,7 @@ complex complex::operator- (complex c)
 	return t;
 }
 
-complex complex::operator-=(const complex other) 
+complex complex::operator-=(const complex other)
 {
 	complex t;
 	t.re -= other.re;
@@ -40,7 +40,7 @@ complex complex::operator-=(const complex other)
 	return t;
 }
 
-complex complex::operator/=(const complex other) 
+complex complex::operator/=(const complex other)
 {
 	complex t;
 	
@@ -60,14 +60,14 @@ bool complex::operator!=(complex other) const
 	return ((other.im != im)&&(other.re != re));
 }
 
-bool complex::operator== (complex c) 
+bool complex::operator== (complex c)
 {
 	return (re == c.re) && (im == c.im);
 }
 
-ostream& operator <<(ostream& os, complex c) 
+ostream& operator <<(ostream& os, complex c)
 {
-	os <<"(" << c.re << "+" << c.im << "i)";
+	os << "(" << c.re << "+" << c.im << "i)";
 	return os;
 }
 
