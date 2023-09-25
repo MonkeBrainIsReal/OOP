@@ -1,9 +1,9 @@
 #include "complex.h"
 complex::complex() {
-
+	
 }
 
-complex::complex(const int& value) : re(static_cast<double>(value)), im(0.0)
+complex::complex(const int value) : re(static_cast<double>(value)), im(0.0)
 {
 
 }
@@ -32,14 +32,14 @@ complex complex::operator- (complex c)
 	return t;
 }
 
-complex complex::operator-=(const complex& other) 
+complex complex::operator-=(const complex other) 
 {
 		re -= other.re;
 		im -= other.im;
 		return *this;
 }
 
-complex complex::operator/=(const complex& other) 
+complex complex::operator/=(const complex other) 
 {
 	double denominator = other.re * other.re + other.im * other.im;
 	double newRe = (re * other.re + im * other.im) / denominator;
