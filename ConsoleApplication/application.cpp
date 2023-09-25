@@ -13,7 +13,6 @@ int Tapplication::exec()
 {
 	int select;
 	Tmatrix matrix;
-	int capacity;
 	COORD cord{ 0,2 };
 	HANDLE Output = GetStdHandle(STD_OUTPUT_HANDLE);
 	while (true)

@@ -3,7 +3,7 @@ complex::complex() {
 
 }
 
-complex::complex(const int& value) : re(static_cast<double>(value)), im(0.0)
+complex::complex(const int value) : re(static_cast<double>(value)), im(0.0)
 {
 
 }
@@ -32,28 +32,32 @@ complex complex::operator- (complex c)
 	return t;
 }
 
-complex complex::operator-=(const complex& other) 
+complex complex::operator-=(const complex other) 
 {
-		re -= other.re;
-		im -= other.im;
-		return *this;
+	complex t;
+	t.re -= other.re;
+	t.im -= other.im;
+	return t;
 }
 
-complex complex::operator/=(const complex& other) 
+complex complex::operator/=(const complex other) 
 {
+	complex t;
+	
 	double denominator = other.re * other.re + other.im * other.im;
 	double newRe = (re * other.re + im * other.im) / denominator;
 	double newIm = (im * other.re - re * other.im) / denominator;
 
-	re = newRe;
-	im = newIm;
-
-	return *this;
+	t.re = newRe;
+	t.im = newIm;
+	return t;
 }
 
-bool complex::operator!=(double other) const 
+bool complex::operator!=(complex other) const 
 {
-	return value != other;
+
+
+	return ((other.im != 0)&&(other.re != 0));
 }
 
 bool complex::operator== (complex c) 
