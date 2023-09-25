@@ -1,6 +1,6 @@
 #include "complex.h"
 complex::complex() {
-
+	
 }
 
 complex::complex(const int value) : re(static_cast<double>(value)), im(0.0)
