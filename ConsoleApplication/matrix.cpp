@@ -120,7 +120,6 @@ int Tmatrix::rank() {
 				break;
 			}
 		}
-
 		if (nonzeroRow != -1) {
 			if (nonzeroRow != rank) {
 				std::swap(matrix[nonzeroRow], matrix[rank]);
