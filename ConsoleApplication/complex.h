@@ -11,7 +11,6 @@ class complex
 public:
 	double re = 0;
 	double im=0;
-	double value=0;
 	complex();
 	complex(const int);
 	complex(double realValue) : re(realValue), im(0.0) {}

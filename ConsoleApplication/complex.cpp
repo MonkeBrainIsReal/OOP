@@ -57,7 +57,7 @@ bool complex::operator!=(complex other) const
 {
 
 
-	return ((other.im != 0)&&(other.re != 0));
+	return ((other.im != im)&&(other.re != re));
 }
 
 bool complex::operator== (complex c) 
