@@ -34,30 +34,21 @@ complex complex::operator- (complex c)
 
 complex complex::operator-=(const complex other) 
 {
-	complex t;
-	t.re -= other.re;
-	t.im -= other.im;
-	return t;
+	re -= other.re;
+	im -= other.im;
+	return *this;
 }
 
 complex complex::operator/=(const complex other) 
 {
-	complex t;
-	
-	double denominator = other.re * other.re + other.im * other.im;
-	double newRe = (re * other.re + im * other.im) / denominator;
-	double newIm = (im * other.re - re * other.im) / denominator;
-
-	t.re = newRe;
-	t.im = newIm;
-	return t;
+	re /= other.re;
+	im /= other.im;
+	return *this;
 }
 
 bool complex::operator!=(complex other) const 
 {
-
-
-	return ((other.im != im)&&(other.re != re));
+	return (re != other.re) || (im != other.im);
 }
 
 bool complex::operator== (complex c) 
