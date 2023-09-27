@@ -41,27 +41,32 @@ void Tmatrix::PrintMatrix() {
 	}
 }
 number Tmatrix::PrintDet() {
-	number submatrix[10][10];
-	fillWithZeros(submatrix);
+	number** submatrix;
+	submatrix = new number * [capacity];
+	for (int i = 0; i < capacity; i++) {
+		submatrix[i] = new number[capacity];
+	}
+	for (int i = 0; i < capacity; ++i) {
+		for (int j = 0; j < capacity; ++j) {
+			submatrix[i][j] = 0;
+		}
+	}
 	for (int i = 0; i < capacity; i++) {
 		for (int j = 0; j < capacity; j++) {
 			submatrix[i][j] = arr[i][j];
 		}
 
 	}
-	return determinant(submatrix, capacity);
-}
-void Tmatrix::fillWithZeros(number massiv[10][10]) {
-	for (int i = 0; i < capacity; ++i) {
-		for (int j = 0; j < capacity; ++j) {
-			massiv[i][j] = 0;
-		}
-	}
+	return determinant((number**)submatrix, capacity);
 }
 
-number Tmatrix::determinant(number matrix[10][10], int n) {
+number Tmatrix::determinant(number** matrix, int n) {
 	number det = 0;
-	number submatrix[10][10];
+	number** submatrix;
+	submatrix= new number * [n];
+	for (int i = 0; i < n; i++) {
+		submatrix[i] = new number[n];
+	}
 	if (n == 2)
 		return ((matrix[0][0] * matrix[1][1]) - (matrix[1][0] * matrix[0][1]));
 	else {
@@ -122,7 +127,7 @@ int Tmatrix::rank() {
 		}
 		if (nonzeroRow != -1) {
 			if (nonzeroRow != rank) {
-				std::swap(matrix[nonzeroRow], matrix[rank]);
+				swap(matrix[nonzeroRow], matrix[rank]);
 			}
 			number pivot = matrix[rank][col];
 			for (int i = 0; i < capacity; i++) {
@@ -138,6 +143,9 @@ int Tmatrix::rank() {
 			}
 			rank++;
 		}
+	}
+	if (rank == 0) {
+		rank = 1;
 	}
 	return rank;
 }

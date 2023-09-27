@@ -20,8 +20,7 @@ public:
 private:
 	number** arr;
 	int capacity = 3;
-	void fillWithZeros(number matrix[10][10]);
-	number determinant(number matrix[10][10], int capacity);
+	number determinant(number **matrix, int capacity);
 };
 
 #endif // !MATRIX_H

@@ -28,7 +28,7 @@ complex complex::operator- (complex c)
 {
 	complex t;
 	t.re = re - c.re;
-	t.im = c.im - im;
+	t.im = im - c.im;
 	return t;
 }
 
@@ -41,8 +41,11 @@ complex complex::operator-=(const complex other)
 
 complex complex::operator/=(const complex other)
 {
-	re /= other.re;
-	im /= other.im;
+	double denominator = other.re * other.re + other.im * other.im;
+	double newRe = (re * other.re + im * other.im) / denominator;
+	double newIm = (im * other.re - re * other.im) / denominator;
+	re = newRe;
+	im = newIm;
 	return *this;
 }
 
