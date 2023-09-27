@@ -20,8 +20,7 @@ public:
 	complex operator-=(const complex other);
 	complex operator/=(const complex other);
 	bool operator== (complex);
-	bool operator!=(complex other) const;
-
+	bool operator!=(double other) const;
 	friend ostream& operator <<(ostream&, complex);
 	friend istream& operator >>(istream&, complex&);
 	
