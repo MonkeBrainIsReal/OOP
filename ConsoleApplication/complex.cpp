@@ -49,7 +49,7 @@ complex complex::operator/=(const complex other)
 	return *this;
 }
 
-bool complex::operator!=(complex other) const 
+bool complex::operator!=(complex other) 
 {
 	return (re != other.re) || (im != other.im);
 }
