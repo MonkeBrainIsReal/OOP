@@ -117,10 +117,11 @@ int Tmatrix::rank() {
 		}
 	}
 	int rank = 0;
+	number zero=0;
 	for (int col = 0; col < capacity; col++) {
 		int nonzeroRow = -1;
 		for (int row = rank; row < capacity; row++) {
-			if (matrix[row][col] != 0) {
+			if (matrix[row][col] != zero) {
 				nonzeroRow = row;
 				break;
 			}

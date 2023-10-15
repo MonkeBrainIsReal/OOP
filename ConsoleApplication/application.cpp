@@ -29,7 +29,7 @@ int Tapplication::exec()
 			cord.Y = 7;
 			SetConsoleCursorPosition(Output, cord);
 			SetConsoleTextAttribute(Output, 3);
-			//matrix.PrintDet();
+			cout<<matrix.PrintDet()<<endl;
 			cord.Y += 1;
 			SetConsoleCursorPosition(Output, cord);
 			SetConsoleTextAttribute(Output, 15);

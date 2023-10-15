@@ -1,140 +1,180 @@
-#include "Trational.h"
-#include "cmath"
-rational::rational() : numerator(0), denominator(1) {}
+#include <iostream>
 
-int rational::gcd(int a, int b)
-{
-while (b != 0) {
-    int temp = b;
-    b = a % b;
-    a = temp;
-}
-return a;
-}
+class Rational {
+private:
+    int numerator;
+    int denominator;
 
-rational::rational(double value)
-{
-    int sign = (value < 0) ? -1 : 1;
-    value = std::abs(value);
-    double epsilon = 1.0e-6; // Точность для округления
-
-    int wholePart = static_cast<int>(value);
-    double fractionalPart = value - wholePart;
-
-    int gcdValue = gcd(static_cast<int>(fractionalPart / epsilon), static_cast<int>(1.0 / epsilon));
-    numerator = sign * (wholePart * gcdValue + static_cast<int>(fractionalPart / epsilon));
-    denominator = gcdValue;
-}
-
-
-rational::rational(int num, int denom) : numerator(num), denominator(denom)
-{
-    if (denominator == 0)
-    {
-        std::cerr << "Ошибка: Знаменатель не может быть равен 0." << std::endl;
-        denominator = 1;
-    }
-}
-
-int rational::getNumerator()  {
-    return numerator;
-}
-
-int rational::getDenominator()  {
-    return denominator;
-}
-
-void rational::print()  {
-    std::cout << numerator << "/" << denominator;
-}
-
-rational rational::operator+(const rational& other)  {
-    int newNumerator = (numerator * other.denominator) + (other.numerator * denominator);
-    int newDenominator = denominator * other.denominator;
-    return rational(newNumerator, newDenominator);
-}
-
-rational rational::operator-(const rational& other)  {
-    int newNumerator = (numerator * other.denominator) - (other.numerator * denominator);
-    int newDenominator = denominator * other.denominator;
-    return rational(newNumerator, newDenominator);
-}
-
-rational rational::operator*(const rational& other)  {
-    int newNumerator = numerator * other.numerator;
-    int newDenominator = denominator * other.denominator;
-    return rational(newNumerator, newDenominator);
-}
-
-rational rational::operator/(const rational& other)  {
-    if (other.numerator == 0) {
-        std::cerr << "Ошибка: Деление на ноль." << std::endl;
-        return rational();
-    }
-    int newNumerator = numerator * other.denominator;
-    int newDenominator = denominator * other.numerator;
-    return rational(newNumerator, newDenominator);
-}
-
-// Операторы с присваиванием
-rational& rational::operator+=(const rational& other) {
-    *this = *this + other;
-    return *this;
-}
-
-rational& rational::operator-=(const rational& other) {
-    *this = *this - other;
-    return *this;
-}
-
-rational& rational::operator*=(const rational& other) {
-    *this = *this * other;
-    return *this;
-}
-
-rational& rational::operator/=(const rational& other) {
-    *this = *this / other;
-    return *this;
-}
-
-// Операторы сравнения
-bool rational::operator==(const rational& other)  {
-    return (numerator * other.denominator) == (other.numerator * denominator);
-}
-
-bool rational::operator!=(const rational& other)  {
-    return !(*this == other);
-}
-
-rational& rational::operator=(const rational& other) {
-    if (this == &other) {
-        return *this; // Самоприсваивание, ничего делать не нужно
+    int gcd(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 
-    numerator = other.numerator;
-    denominator = other.denominator;
+public:
+    // Конструкторы
+    Rational() : numerator(0), denominator(1) {}
+    Rational(int num, int denom) : numerator(num), denominator(denom) {
+        if (denominator == 0) {
+            std::cerr << "err: denomenator = 0" << std::endl;
+            denominator = 1;
+        }
+        int commonFactor = gcd(numerator, denominator);
+        numerator /= commonFactor;
+        denominator /= commonFactor;
+    }
+    Rational(int num) : numerator(num), denominator(1) {}
 
-    return *this;
-}
+    // Конструктор из double
+    Rational(double value) {
+        int sign = (value < 0) ? -1 : 1;
+        value = std::abs(value);
+        double epsilon = 1.0e-6; // Точность для округления
+
+        int wholePart = static_cast<int>(value);
+        double fractionalPart = value - wholePart;
+
+        int gcdValue = gcd(static_cast<int>(fractionalPart / epsilon), static_cast<int>(1.0 / epsilon));
+        numerator = sign * (wholePart * gcdValue + static_cast<int>(fractionalPart / epsilon));
+        denominator = gcdValue;
+    }
+    // Метод для получения числителя
+    int getNumerator() const {
+        return numerator;
+    }
+
+    // Метод для получения знаменателя
+    int getDenominator() const {
+        return denominator;
+    }
+
+    // Оператор сложения
+    Rational operator+(const Rational& other) const {
+        int newNumerator = numerator * other.denominator + other.numerator * denominator;
+        int newDenominator = denominator * other.denominator;
+        return Rational(newNumerator, newDenominator);
+    }
+
+    // Оператор вычитания
+    Rational operator-(const Rational& other) const {
+        int newNumerator = numerator * other.denominator - other.numerator * denominator;
+        int newDenominator = denominator * other.denominator;
+        return Rational(newNumerator, newDenominator);
+    }
+
+    // Оператор умножения
+    Rational operator*(const Rational& other) const {
+        int newNumerator = numerator * other.numerator;
+        int newDenominator = denominator * other.denominator;
+        return Rational(newNumerator, newDenominator);
+    }
+
+    // Оператор деления
+    Rational operator/(const Rational& other) const {
+        if (other.numerator == 0) {
+            std::cerr << "Ошибка: Деление на ноль." << std::endl;
+            return Rational();
+        }
+        int newNumerator = numerator * other.denominator;
+        int newDenominator = denominator * other.numerator;
+        return Rational(newNumerator, newDenominator);
+    }
 
 
-ostream& operator<<(ostream& os, rational& c) 
-{
-        os << "(" << c.numerator << "/" << c.denominator << ")";
-        return os;
-}
+    Rational& operator+=(const Rational& other) {
+        int newNumerator = numerator * other.denominator + other.numerator * denominator;
+        int newDenominator = denominator * other.denominator;
+        int commonFactor = gcd(newNumerator, newDenominator);
+        numerator = newNumerator / commonFactor;
+        denominator = newDenominator / commonFactor;
+        return *this;
+    }
 
+    Rational& operator-=(const Rational& other) {
+        int newNumerator = numerator * other.denominator - other.numerator * denominator;
+        int newDenominator = denominator * other.denominator;
+        int commonFactor = gcd(newNumerator, newDenominator);
+        numerator = newNumerator / commonFactor;
+        denominator = newDenominator / commonFactor;
+        return *this;
+    }
 
-istream& operator >>(istream& is, rational& c)
-{
-    is >> c.numerator >> c.denominator;
-    return is;
-}
+    Rational& operator*=(const Rational& other) {
+        int newNumerator = numerator * other.numerator;
+        int newDenominator = denominator * other.denominator;
+        int commonFactor = gcd(newNumerator, newDenominator);
+        numerator = newNumerator / commonFactor;
+        denominator = newDenominator / commonFactor;
+        return *this;
+    }
 
-//QString& operator <<(QString& s, rational& r)
-//{
-//    s+=QString().setNum(r.denominator);
-//    s+="/";
-//    s+=QString().setNum(r.numerator);
-//    return s;
-//}
+    Rational& operator/=(const Rational& other) {
+        if (other.numerator == 0) {
+            std::cerr << "Ошибка: Деление на ноль." << std::endl;
+            return *this;
+        }
+        int newNumerator = numerator * other.denominator;
+        int newDenominator = denominator * other.numerator;
+        int commonFactor = gcd(newNumerator, newDenominator);
+        numerator = newNumerator / commonFactor;
+        denominator = newDenominator / commonFactor;
+        return *this;
+    }
+
+    // Оператор равенства
+    bool operator==(const Rational& other) const {
+        return numerator == other.numerator && denominator == other.denominator;
+    }
+
+    // Оператор неравенства
+    bool operator!=(const Rational& other) const {
+        return !(*this == other);
+    }
+
+    // Оператор "меньше чем"
+    bool operator<(const Rational& other) const {
+        return numerator * other.denominator < other.numerator* denominator;
+    }
+
+    // Оператор "больше чем"
+    bool operator>(const Rational& other) const {
+        return numerator * other.denominator > other.numerator * denominator;
+    }
+
+    // Оператор "меньше или равно"
+    bool operator<=(const Rational& other) const {
+        return numerator * other.denominator <= other.numerator * denominator;
+    }
+
+    // Оператор "больше или равно"
+    bool operator>=(const Rational& other) const {
+        return numerator * other.denominator >= other.numerator * denominator;
+    }
+
+    // Метод для вывода дроби
+    void print() const {
+        std::cout << numerator << "/" << denominator;
+    }
+
+    friend std::istream& operator>>(std::istream& in, Rational& rational) {
+        char slash; // Для чтения символа '/'
+        in >> rational.numerator >> slash >> rational.denominator;
+        int commonFactor = rational.gcd(rational.numerator, rational.denominator);
+        rational.numerator /= commonFactor;
+        rational.denominator /= commonFactor;
+        return in;
+    }
+
+    // Перегруженный оператор вывода
+    friend std::ostream& operator<<(std::ostream& out, const Rational& rational) {
+        out << rational.numerator;
+        if (rational.denominator != 1) {
+            out << '/' << rational.denominator;
+        }
+        return out;
+    }
+
+};
