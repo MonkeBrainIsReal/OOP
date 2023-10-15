@@ -9,8 +9,8 @@ class complex
 {
 	
 public:
-	double re = 0;
-	double im=0;
+	int re = 0;
+	int im = 0;
 	complex();
 	complex(const int);
 	complex(double realValue) : re(realValue), im(0.0) {}
