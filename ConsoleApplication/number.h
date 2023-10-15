@@ -1,10 +1,9 @@
 #pragma once
-#include"complex.h"
-#include "Trational.cpp"
+#include "Trational.h"
 #ifndef NUMBER_H
 #define NUMBER_H
 
 
-typedef Rational number;
+typedef rat number;
 
 #endif // !NUMBER_H
