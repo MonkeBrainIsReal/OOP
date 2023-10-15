@@ -28,7 +28,7 @@ rat::rat(int num, int denom) : numerator(num), denominator(denom) {
     numerator /= commonFactor;
     denominator /= commonFactor;
 }
-rat::rat(int num) : numerator(num), denominator(1) {}
+rat::rat(int num) : numerator(num), denominator(1) {}//rat numberwweww=0;
 
 // Конструктор из double
 rat::rat(double value) {
