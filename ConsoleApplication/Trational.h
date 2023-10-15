@@ -7,53 +7,61 @@
 using namespace std;
 //#include <QLineEdit>
 
-class rational {
+class Rational {
 private:
     
 public:
     int numerator;
     int denominator;
-    rational();
+    Rational();
 
-    rational(double value);
+    Rational(int num , int denum);
 
-    rational(int num, int denom);
+    Rational(int num, int denom) : numerator(num), denominator(denom) {};
 
-    int getNumerator();
+    Rational(int num) : numerator(num), denominator(1) {};
 
-    int getDenominator();
+    Rational(double value);
 
-    void print() ;
+    int getNumerator()const;
 
-    rational operator+(const rational& other);
+    int getDenominator()const;
+    
+    Rational operator+(const Rational& other) const;
 
-    rational operator-(const rational& other);
+    Rational operator-(const Rational& other) const;
 
-    rational operator*(const rational& other);
+    Rational operator*(const Rational& other) const;
 
-    rational operator/(const rational& other);
+    Rational operator/(const Rational& other) const;
 
-    rational& operator+=(const rational& other);
+    Rational& operator+=(const Rational& other);
 
-    rational& operator-=(const rational& other);
+    Rational& operator-=(const Rational& other);
 
-    rational& operator*=(const rational& other);
+    Rational& operator*=(const Rational& other);
 
-    rational& operator/=(const rational& other);
+    Rational& operator/=(const Rational& other);
 
-    bool operator==(const rational& other);
+    bool operator==(const Rational& other) const;
 
-    bool operator!=(const rational& other);
+    bool operator!=(const Rational& other) const;
 
-    rational& operator=(const rational& other);
+    bool operator<(const Rational& other) const;
 
-    rational pow(int exponent);
+    bool operator>(const Rational& other) const;
+
+    bool operator<=(const Rational& other) const;
+
+    bool operator>=(const Rational& other) const;
+
+    void print() const;
 
     int gcd(int a, int b);
 
-    friend ostream& operator<<(ostream&, rational&);
+    friend std::istream& operator>>(std::istream& in, Rational& rational);
 
-    friend istream& operator>>(istream&, rational&);
+    friend std::ostream& operator<<(std::ostream& out, const Rational& rational);
     //friend QString& operator <<(QString&, rational&);
     //friend QString& operator >>(QString&, rational&);
 
